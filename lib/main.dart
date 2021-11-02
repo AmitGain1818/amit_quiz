@@ -81,19 +81,21 @@ class _AmitState extends State<Amit> {
         appBar: AppBar(
           title: Center(child: Text('Amit Quiz')),
         ),
-        body: _answerIndex < question.length
-            ? Column(
-                children: [
-                  Questions(question[_answerIndex]['questionText'] as String),
-                  ...(question[_answerIndex]['answer'] as List<String>)
-                      .map((answer) {
-                    return Answers(_answerQuestion, answer);
-                  }),
-                ],
-              )
-            : Center(
-                child: Text('This Quiz is completed'),
-              ),
+        body: Center(
+          child: _answerIndex < question.length
+              ? Column(
+                  children: [
+                    Questions(question[_answerIndex]['questionText'] as String),
+                    ...(question[_answerIndex]['answer'] as List<String>)
+                        .map((answer) {
+                      return Answers(_answerQuestion, answer);
+                    }),
+                  ],
+                )
+              : Center(
+                  child: Text('This Quiz is completed'),
+                ),
+        ),
       ),
     );
   }
